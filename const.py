@@ -1,0 +1,2 @@
+POSITION_TYPE_SHORT = 'short'
+POSITION_TYPE_LONG = 'long'
