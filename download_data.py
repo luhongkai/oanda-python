@@ -1,4 +1,3 @@
-import os
 import datetime
 import sys, getopt
 import csv
