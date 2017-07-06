@@ -26,9 +26,7 @@ def get_historical_data(client, instrument, granularity, datetime_from, datetime
 
     to_complete = len(ranges_to_fetch)
     completed_items = 0
-    completed_percent = 0
-    print('Downloading data ({}%)'.format(completed_percent), end='\r')
-    sys.stdout.flush()
+    write_download_status(0)
 
     for range_data in ranges_to_fetch:
         response = client.get_history(instrument=instrument, granularity=granularity,
@@ -42,14 +40,17 @@ def get_historical_data(client, instrument, granularity, datetime_from, datetime
         final_response['candles'].extend(response['candles'])
 
         completed_items = completed_items + 1
-        completed_percent = round((completed_items / to_complete) * 100)
-        print('Downloading data ({}%)'.format(completed_percent), end='\r')
-        sys.stdout.flush()
+        write_download_status(round((completed_items / to_complete) * 100))
 
     print('')
     sys.stdout.flush()
 
     return final_response
+
+
+def write_download_status(completed_percent):
+    print('Downloading data ({}%)'.format(completed_percent), end='\r')
+    sys.stdout.flush()
 
 
 def convert_oanda_request_to_panda_dataframe_and_annotations(oanda_response):
