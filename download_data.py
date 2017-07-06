@@ -2,7 +2,7 @@ import os
 import datetime
 import sys, getopt
 import csv
-from data_sources import oanda
+from data_sources.oanda import oanda as oanda
 
 
 DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
@@ -70,9 +70,7 @@ def main(argv):
 
     csv_file = open(settings['output_file'], 'w', newline='')
 
-    client = oanda.get_client(os.environ.get('OANDA_API_ACCESS_TOKEN'))
-
-    response = oanda.get_historical_data(client, instrument=settings['instrument'], granularity=settings['granularity'],
+    response = oanda.get_historical_data(instrument=settings['instrument'], granularity=settings['granularity'],
                                          datetime_from=settings['datetime_from'], datetime_to=settings['datetime_to'])
 
     print('Started to writing data to file...')

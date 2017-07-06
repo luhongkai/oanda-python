@@ -1,6 +1,9 @@
 import const
 
 
+PATTERN_TYPE_PINBAR = 'pinbar'
+
+
 def get_pinbar_status(open, high, low, close):
     pinbar_status = dict(is_valid=False, type=None)
     min_big_tail_size = 0.0002
