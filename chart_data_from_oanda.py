@@ -5,8 +5,8 @@ from charts_generator import charts_plotly
 
 
 def main():
-    datetime_from = datetime.datetime(2017, 7, 1, 0, 0, 0)
-    datetime_to = datetime.datetime(2017, 7, 6, 0, 0, 0)
+    datetime_from = datetime.datetime(2016, 1, 1, 0, 0, 0)
+    datetime_to = datetime.datetime(2016, 1, 30, 23, 59, 59)
     granularity = 'M15'
     instrument = 'EUR_USD'
 

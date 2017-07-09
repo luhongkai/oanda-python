@@ -23,11 +23,12 @@ def transform_data_to_panda_dataframe_and_patterns_info(historical_data):
         pinbar_status = pinbar.get_pinbar_status(item['open'], item['high'], item['low'], item['close'])
 
         if pinbar_status['is_valid'] is True:
-            patterns['pinbar'].append({
-                'type': PATTERN_TYPE_PINBAR,
-                'data': pinbar_status,
-                'candle': candle
-            })
+            pinbar_data = dict(list(pinbar_status.items())
+                               + list(candle.items())
+                               + list(dict(pattern=PATTERN_TYPE_PINBAR).items()))
+            pinbar_data['time'] = parsed_time
+            patterns['pinbar'].append(pinbar_data)
+
 
     return pd.DataFrame(items), patterns
 
