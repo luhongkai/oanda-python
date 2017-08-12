@@ -4,7 +4,7 @@ from charts_generator import charts_plotly
 
 
 def main():
-    filename = '.\\data\\M5\\eur_usd_2016_m5.csv'
+    filename = '.\\data\\test_data_for_pinbars.csv'
 
     data = datasource_csv.get_historical_data(filename)
     df, patterns_info = dtf.get_candlesticks_and_patterns(data)

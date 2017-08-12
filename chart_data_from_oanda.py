@@ -2,11 +2,12 @@ import datetime
 from data_sources.oanda import oanda as oanda
 import data_sources.data_transformer as dtf
 from charts_generator import charts_plotly
+from patterns.pinbar import SETTINGS as PINBAR_SETTINGS
 
 
 def main():
-    datetime_from = datetime.datetime(2016, 1, 1, 0, 0, 0)
-    datetime_to = datetime.datetime(2016, 1, 30, 23, 59, 59)
+    datetime_from = datetime.datetime(2017, 7, 14, 0, 0, 0)
+    datetime_to = datetime.datetime(2017, 7, 15, 23, 59, 59)
     granularity = 'M15'
     instrument = 'EUR_USD'
 
